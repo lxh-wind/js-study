@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript深入之从作用域链理解闭包</title>
+</head>
+<body>
+    <script>
+
+        var scope = 'global scope';
+
+        function checkscope(){
+            var scope = 'local scope';
+            function f(){
+                return scope;
+            }
+
+            return f;
+        }
+        var foo = checkscope();  // foo 指向函数 f
+
+        foo();  // 调用函数 f
+
+
+
+
+
+        // var data = [];
+
+        // for(var i = 0; i < 3; i++){
+        //     data[i] = (function(i){
+        //         return function(){
+        //             console.log(i)
+        //         }
+        //     })(i)
+        // }
+
+        // data[0]();  //0
+        // data[1]();  //1
+        // data[2]();  //2
+
+
+        var data = [];
+
+        for (let i = 0; i < 3; i++) {
+            data[i] = function () {
+                console.log(i);
+            };
+        }
+
+        data[0]();
+        data[1]();
+        data[2]();
+
+    </script>
+</body>
+</html>

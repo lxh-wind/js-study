@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>深入浅出图解作用域链和闭包</title>
+</head>
+<body>
+    <script>
+
+        // 闭包可以访问当前函数以外的变量
+        // function getOuter(){
+        //     var date = '815';
+        //     function getDate(str){
+        //         console.log(str + date); //访问外部的 date
+        //     }
+
+        //     return getDate('今天是：'); //今天是：815
+        // }
+
+        // getOuter();
+
+/**********************************************************************************************/
+
+        // 即使外部函数已经返回，闭包仍能访问外部函数定义的变量
+
+        function getOuter(){
+            var date = '815';
+            function getDate(str){
+                console.log(str + date); //访问外部的 date
+            }
+
+            return getDate; //外部函数返回
+        }
+
+        var today = getOuter();
+
+        // today('今天是：');   // 今天是：815
+        // today('明天是：');   // 明天是：815
+
+
+/**********************************************************************************************/
+
+        // 闭包可以更新外部变量的值
+
+        function updateCount(){
+            var count = 0;
+            function getCount(val){
+                count = val;
+                console.log(count);
+            }
+            return getCount;     //外部函数返回
+        }
+        var count = updateCount();
+        // count(20); //20
+        // count(99); //99
+
+/**********************************************************************************************/
+
+        "use strict";
+
+        var foo = 1;
+        var bar = 2;
+
+        function myFunc (){
+            var a = 1;
+            var b = 2;
+            var foo = 3;
+
+            console.log('inside myFunc');
+        }
+
+        // console.log('outside');
+
+        // myFunc();
+        // console.log(foo);
+
+
+/**********************************************************************************************/
+        // 有嵌套的函数
+
+        "use strict";
+
+        function createCounter(initial){
+            var counter = initial;
+
+            function increment(value){
+                counter += value;
+            }
+
+            function get(){
+                return counter;
+            }
+
+            return {
+                increment:increment,
+                get:get
+            }
+        }
+
+        var myCounter = createCounter(100);
+        console.log(myCounter.get());  //返回 100
+
+        myCounter.increment(5);
+        console.log(myCounter.get());  //返回 105
+
+
+        // "use strict";
+        // function createCounter(initial) {
+        // /* ... see the code from previous example ... */
+        // }
+
+        // //-- create counter objects
+        // var myCounter1 = createCounter(100);
+        // var myCounter2 = createCounter(200);
+
+
+
+    </script>
+</body>
+</html>

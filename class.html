@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            class Point {
+                constructor(x,y){
+                    this.x = x;
+                    this.y = y;
+                }
+                // 定义了一个 toString 方法
+                toString(){
+                    return `(${this.x},${this.y})`
+                }
+            }
+            /*
+            *构造函数的 prototype 属性在 ES6  的 类 上继续存在。
+            *事实上，类的所所有方法都定义在类的 prototype 属性上
+            **/
+            console.log(typeof Point);  // function
+            console.log( Point === Point.prototype.constructor ) // true
+            console.log(Point.prototype); //{constructor: ƒ, toString: ƒ}
+
+            let p = new Point(1,2)
+
+            /*
+            * 在类的实例上调用方法，其实就是调用原型 上的方法
+            * */
+            console.log(p.toString());
+
+
+            console.log(Object.keys(Point.prototype));  // []
+
+            console.log(Object.getOwnPropertyNames(Point.prototype)); // ["constructor", "toString"]
+
+
+        </script>
+</body>
+</html>

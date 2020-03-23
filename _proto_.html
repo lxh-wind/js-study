@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>原型/原型链</title>
+</head>
+<body>
+    <script>
+
+        // function Dog(name,age){
+        //     this.name = name;
+        //     this.age = age;
+        //     this.bark = function(){
+        //         return 'wangwang~';
+        //     }
+        // }
+        // const husky = new Dog('Lolita',4);
+        // const alaska = new Dog('Roland',10);
+        // console.log('husky',husky);
+        // console.log('----------------------------------------');
+        // console.log('alaska',alaska);
+
+
+        /****************************************************************************************************/
+        // function Foo(){};
+        // const foo = new Foo();
+    
+        // //原型对象的 constructor 属性指向构造函数
+        // console.log( Foo.prototype.constructor === Foo);  // true
+
+        // //实例的 constructor 属性同样指向 构造函数
+        // console.log( foo.constructor === Foo); // true
+
+        /****************************************************************************************************/
+
+        // 修改构造函数例子 将 bark 方法放到构造函数的原型中年
+        // function Dog(name,age){
+        //     this.name = name;
+        //     this.age = age;
+        // }
+
+        // Dog.prototype.bark = function(){
+        //     return 'wangwang~';
+        // }
+
+        // const husky = new Dog('Lolita',4);
+        // const alaska = new Dog('Roland',10); 
+
+        // husky.bark(); //wangwang~
+        // alaska.bark(); //wangwang~
+
+        // console.log('husky',husky);
+
+        /****************************************************************************************************/
+        // 原型链
+        // function Parent(name){
+        //     this.name = name;
+        // }
+
+        // const p = new Parent();
+        // console.log(p);
+
+        // console.log(p.__proto__ === Parent.prototype); //true
+
+        // console.log(p.__proto__.__proto__ === Object.prototype); //true
+
+        // console.log(p.__proto__.__proto__.__proto__ === null); //true
+
+        /****************************************************************************************************/
+
+        const cat = {
+            type:'猫科'
+        };
+
+        const tiger = Object.create(cat);
+
+        tiger.tooth = '大牙';
+
+        console.log(tiger);
+
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 一个promise 实例
+        // const promise = new Promise(function(resolve,reject){
+        //     return resolve;
+        // })
+
+        // promise.then(function(value){
+        //     console.log(value);
+        // },function(error){
+        //     console.log(error);
+        // })
+
+        
+        // 一个简单的 Promise 
+        // function timeout(ms){
+        //     return new Promise((resolve,reject) => {
+        //         // setTimeout(resolve,ms,'done');
+        //         resolve(要返回的内容)
+        //     })
+        // }
+
+        // timeout(2000).then(value=>{
+        //     console.log(value);
+        // })
+
+
+    /***************************************************************************
+        // 下面就是一个异步的小例子   
+        // let promise = new Promise((resolve,reject)=>{
+        //     console.log('promise');
+        //     resolve();
+        // })
+
+        // promise.then(value=>{
+        //     console.log('resolve')
+        // })
+        // console.log('你好');
+        // console.log('Hi.');
+
+        // 执行结果：
+        // promise
+        // 你好
+        // Hi.
+        // resolve
+        // 上述代码 中 promise 新建后立即执行，所以首先输出的是Promise，
+        // 然后 then 方法指定的回调函数 会在  当先脚本 所有同步的任务执行完 才会执行，
+        // resolve 方法 最后输出
+    **************************************************************************/
+
+
+    // /***************************************************************************
+    // 用 Promise 模拟一个ajax 请求  返回 json 字符串
+
+    // const getJSON = function(url){
+    //     const promise = new Promise((resolve,reject)=>{
+
+    //         const handler = function(){
+    //             console.log(this);
+    //             if (this.readyState !== 4) {
+    //                 return;
+    //             }
+    //             if (this.status === 200) {
+    //                 resolve(this.response);
+    //             } else {
+    //                 reject(new Error(this.statusText));
+    //             }
+    //         };
+
+    //         const client = new XMLHttpRequest();
+    //         client.open("GET", url);
+    //         client.onreadystatechange = handler;
+    //         client.responseType = "jsonp";
+    //         client.setRequestHeader("Accept", "application/json");
+    //         client.send();
+    //     })
+    //     return promise;
+    // }
+
+
+    // getJSON('http://api.douban.com/v2/movie/top250?start=25&count=25').then(value=>{
+    //     console.log(value);
+    // },(error)=>{
+    //     console.log(error);
+    // })
+
+    //  **************************************************************************/
+
+    // function test(resolve, reject) {
+    //     var timeOut = Math.random() * 2;
+    //     console.log(timeOut);
+    //     console.log('set timeout to: ' + timeOut + ' seconds.');
+    //     setTimeout(function () {
+    //         if (timeOut < 1) {
+    //             console.log('call resolve()...');
+    //             resolve('200 OK');
+    //         }else {
+    //             console.log('call reject()...');
+    //             reject('timeout in ' + timeOut + ' seconds.');
+    //         }
+    //     }, timeOut * 1000);
+    // }
+
+    // var p1 = new Promise(test);
+
+    // var p2 = p1.then(function (result) {
+    //     console.log('成功：' + result);
+    // }).catch(function (reason) {
+    //     console.log('失败：' + reason);
+    // });
+
+    // 变量p1是一个Promise对象，它负责执行test函数。由于test函数在内部是异步执行的，
+    // 当test函数执行成功时，我们告诉Promise对象执行成功，当test函数执行失败时，我们告诉Promise对象执行失败。
+
+
+
+
+
+    // 0.5秒后返回input*input的计算结果:
+    function multiply(input) {
+        console.log(input);
+        return new Promise(function (resolve, reject) {
+            console.log('calculating ' + input + ' x ' + input + '...');
+            setTimeout(resolve, 500, input * input);
+        });
+    }
+
+    // 0.5秒后返回input+input的计算结果:
+    // function add(input) {
+    //     console.log(input);
+    //     return new Promise(function (resolve, reject) {
+    //         console.log('calculating ' + input + ' + ' + input + '...');
+    //         setTimeout(resolve, 500, input + input);
+    //     });
+    // }
+
+    // var p = new Promise(function (resolve, reject) {
+    //     console.log('start new Promise...');
+    //     resolve(123);
+    // });
+
+    // p.then(multiply)
+    // .then(add)
+    // .then(multiply)
+    // .then(add)
+    // .then(function (result) {
+    //     console.log('Got value: ' + result);
+    // });
+   
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>理解 Javascript 执行上下文和执行栈</title>
+</head>
+<body>
+    <script>
+        // let a = 'Hello World!';
+
+        // function first() {  
+        //     console.log('Inside first function');  
+        //     second();  
+        //     console.log('Again inside first function');  
+        // }
+
+        // function second() {  
+        //     console.log('Inside second function');  
+        // }
+
+        // first();  
+        // console.log('Inside Global Execution Context');
+
+
+        /***************************************************************************/
+        // let person = {
+        //     name:'peter',
+        //     birthYear:1994,
+        //     calcAge:function(){
+        //         console.log(2018-this.birthYear);
+        //     }
+        // }
+
+        // // 'this' 指向 'person' , 因为 'calcAge' 是被 'person' 对象引用调用的。
+        // person.calcAge()
+
+        // let calculateAge = person.calcAge;
+
+        // // 这里 'this' 指向的是 window 对象，因为没有给出任何对象引用
+        // calculateAge()  //NaN
+
+        let a = 20;  
+        const b = 30;  
+        var c;
+
+        function multiply(e, f) {  
+            var g = 20;  
+            return e * f * g;  
+        }
+
+        c = multiply(20, 30);
+
+        //
+    </script>
+</body>
+</html>
